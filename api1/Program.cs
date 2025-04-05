@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using api1.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using api1.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,10 +60,10 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-//Adding repositories
+//Adding Dependency Injections
 builder.Services.AddScoped<StockRepository>();
 builder.Services.AddScoped<CommentRepository>();
-
+builder.Services.AddScoped<TokenService>();
 
 var app = builder.Build();
 

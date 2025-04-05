@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api1.Dtos.Account;
 using api1.Models;
+using api1.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -16,9 +17,11 @@ namespace api1.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-        public AccountController(UserManager<AppUser> userManager)
+        private readonly TokenService _tokenService;
+        public AccountController(UserManager<AppUser> userManager, TokenService tokenService)
         {
             _userManager = userManager;
+            _tokenService = tokenService;
         }
         //Registering User
         [HttpPost("register")]
@@ -34,6 +37,11 @@ namespace api1.Controllers
                     UserName = registerDto.UserName,
                     Email = registerDto.Email
                 };
+                var existingUser = await _userManager.FindByEmailAsync(appUser.Email);
+                if (existingUser != null)
+                {
+                    return BadRequest(new { message = "Email is already in use." });
+                }
 
                 var createdUser = await _userManager.CreateAsync(appUser, registerDto.Password);
                 if (createdUser.Succeeded)
@@ -42,7 +50,14 @@ namespace api1.Controllers
                     var roleResult = await _userManager.AddToRoleAsync(appUser, "User");
                     if (roleResult.Succeeded)
                     {
-                        return Ok("User created");
+                        return Ok(
+                            new NewUserDto
+                            {
+                                UserName = appUser.UserName,
+                                Email = appUser.Email,
+                                Token = _tokenService.CreateToken(appUser)
+                            }
+                        );
                     }
                     else
                     {

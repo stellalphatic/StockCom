@@ -23,6 +23,8 @@ namespace api1.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<IdentityUser>().HasIndex(u => u.Email).IsUnique();
+
             base.OnModelCreating(builder);
             List<IdentityRole> roles = new List<IdentityRole>{
                 new IdentityRole
