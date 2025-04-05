@@ -34,7 +34,7 @@ namespace api1.Controllers
 
             var stockDto = stocks.Select(s => s.ToStockDto());   // .Select() is actually a MAP it's mapping data from model to stockDto
 
-            return Ok(stocks);
+            return Ok(stockDto);
 
         }
 

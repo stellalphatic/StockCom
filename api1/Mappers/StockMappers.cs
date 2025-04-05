@@ -22,6 +22,7 @@ namespace api1.Mappers
                 LastDiv = stockModel.LastDiv,
                 Industry = stockModel.Industry,
                 MarketCap = stockModel.MarketCap,
+               Comments = stockModel.Comments.Select(c => c.ToCommentDto()).ToList()
                 // Here comments are removed bcz i don't want to send comment to client
             };
         }
