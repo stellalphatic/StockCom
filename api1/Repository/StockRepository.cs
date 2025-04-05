@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using api1.Data;
 using api1.Dtos.Stock;
@@ -39,6 +40,21 @@ namespace api1.Repository
 
                 stocks = stocks.Where(x => x.Symbol.Contains(query.Symbol));
             }
+
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                //for url/api/stock?sortby=symbol&isdescending=true/false
+                if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.isDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol);
+                }
+
+                if (query.SortBy.Equals("Purchase", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.isDescending ? stocks.OrderByDescending(s => s.Purchase) : stocks.OrderBy(s => s.Purchase);
+                }
+            }
+
 
             return await stocks.ToListAsync(); // when we we write tolist then our queries are acually give us data otherwise we are actually playing with just queries
         }

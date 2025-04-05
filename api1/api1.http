@@ -8,6 +8,9 @@ Get http://localhost:5128/api/stock?symbol=dot
 Get http://localhost:5128/api/stock?companyname=solana
 
 ###
+Get http://localhost:5128/api/stock?sortby=purchase&isdescending=true
+
+###
 POST http://localhost:5128/api/stock/
 Content-Type: application/json
 
