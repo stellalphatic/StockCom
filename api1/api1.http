@@ -7,12 +7,12 @@ POST http://localhost:5128/api/stock/
 Content-Type: application/json
 
 {
-                "Symbol" : "New",
-                "CompanyName" : "newtesting",
-                "Purchase" : 101,
-                "LastDiv" : 1,
+                "Symbol" : "New1",
+                "CompanyName" : "newt234ng",
+                "Purchase" : 1431,
+                "LastDiv" : 5,
                 "Industry" : "any",
-                "MarketCap" : 1029138
+                "MarketCap" : 1028
 }
 
 ###
@@ -20,7 +20,7 @@ PUT http://localhost:5128/api/stock/3
 Content-Type: application/json
 
 {
-                "Symbol" : "Nhello",
+                "Symbol" : "hello",
                 "CompanyName" : "newtesting111",
                 "Purchase" : 101,
                 "LastDiv" : 1,

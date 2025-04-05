@@ -2,6 +2,7 @@ using api1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using api1.Repository;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
      );
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<StockRepository>(); 
+
+
 
 var app = builder.Build();
 
