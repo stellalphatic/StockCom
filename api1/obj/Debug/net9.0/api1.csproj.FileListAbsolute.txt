@@ -104,3 +104,12 @@ C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\obj\Debug\net9.0\refi
 C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\obj\Debug\net9.0\api1.pdb
 C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\obj\Debug\net9.0\api1.genruntimeconfig.cache
 C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\obj\Debug\net9.0\ref\api1.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\being\OneDrive\Desktop\ASP-Backend\StockCom1\api1\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

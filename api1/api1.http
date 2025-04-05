@@ -11,6 +11,15 @@ Get http://localhost:5128/api/stock?companyname=solana
 Get http://localhost:5128/api/stock?sortby=purchase&isdescending=true
 
 ###
+POST http://localhost:5128/api/account/register
+Content-Type: application/json
+
+{
+                "username" : "hello1",
+                "email" : "newtest@jj.com",
+                "password" : "Hello123456789$"
+}
+###
 POST http://localhost:5128/api/stock/
 Content-Type: application/json
 
