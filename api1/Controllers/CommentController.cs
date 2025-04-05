@@ -72,5 +72,17 @@ namespace api1.Controllers
             return Ok(commentModel);
 
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+
+            var comment = _stockRepo.Delete(id);
+            if (comment == null)
+                return NotFound();
+
+            return Ok(comment);
+        }
+
     }
 }
