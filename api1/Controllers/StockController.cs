@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api1.Data;
 using api1.Dtos.Stock;
+using api1.Helpers;
 using api1.Mappers;
 using api1.Models;
 using api1.Repository;
@@ -27,10 +28,10 @@ namespace api1.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query) // url/api/stock?query
         {
 
-            var stocks = await _stockRepo.GetAllStock();
+            var stocks = await _stockRepo.GetAllStock(query);
 
             var stockDto = stocks.Select(s => s.ToStockDto());   // .Select() is actually a MAP it's mapping data from model to stockDto
 

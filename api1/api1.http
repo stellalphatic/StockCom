@@ -1,6 +1,11 @@
-Get http://localhost:5128/api/stock/1
+Get http://localhost:5128/api/stock/
 
+###
+Get http://localhost:5128/api/stock?symbol=dot
 
+###
+
+Get http://localhost:5128/api/stock?companyname=solana
 
 ###
 POST http://localhost:5128/api/stock/

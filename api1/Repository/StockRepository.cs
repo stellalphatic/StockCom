@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api1.Data;
 using api1.Dtos.Stock;
+using api1.Helpers;
 using api1.Mappers;
 using api1.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +19,28 @@ namespace api1.Repository
             _context = context;
         }
 
-        public async Task<List<Stock>> GetAllStock()
+        public async Task<List<Stock>> GetAllStock(QueryObject query)
         {
 
             // var stocks = await _context.Stocks.ToListAsync();   //deferred execution (.ToList())
 
-            return await _context.Stocks.Include(c => c.Comments).ToListAsync();
+            // return await _context.Stocks.Include(c => c.Comments).ToListAsync(); 
+
+            var stocks = _context.Stocks.Include(c => c.Comments).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(query.CompanyName))
+            {
+
+                stocks = stocks.Where(x => x.CompanyName.Contains(query.CompanyName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.Symbol))
+            {
+
+                stocks = stocks.Where(x => x.Symbol.Contains(query.Symbol));
+            }
+
+            return await stocks.ToListAsync(); // when we we write tolist then our queries are acually give us data otherwise we are actually playing with just queries
         }
         public async Task<Stock?> GetById(int id)
         {
