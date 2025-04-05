@@ -1,0 +1,29 @@
+Get http://localhost:5128/api/stock/
+
+
+
+###
+POST http://localhost:5128/api/stock/
+Content-Type: application/json
+
+{
+                "Symbol" : "New",
+                "CompanyName" : "newtesting",
+                "Purchase" : 101,
+                "LastDiv" : 1,
+                "Industry" : "any",
+                "MarketCap" : 1029138
+}
+
+###
+PUT http://localhost:5128/api/stock/3
+Content-Type: application/json
+
+{
+                "Symbol" : "Nhello",
+                "CompanyName" : "newtesting111",
+                "Purchase" : 101,
+                "LastDiv" : 1,
+                "Industry" : "any",
+                "MarketCap" : 10291381
+}
