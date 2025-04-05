@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api1.Data;
+using api1.Dtos.Comment;
+using api1.Dtos.Stock;
+using api1.Mappers;
 using api1.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +36,15 @@ namespace api1.Repository
                 return null;
 
             return comment;
+        }
+
+        public async Task<Comment> Create(CreateCommentDto commentDto)
+        {
+            var commentModel = commentDto.ToCommentFromCommentDto();
+            await _context.Comments.AddAsync(commentModel);
+            await _context.SaveChangesAsync();
+
+            return commentModel;
         }
     }
 }
