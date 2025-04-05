@@ -1,4 +1,4 @@
-Get http://localhost:5128/api/stock/
+Get http://localhost:5128/api/stock/1
 
 
 
@@ -36,6 +36,17 @@ Content-Type: application/json
                 "Title" : "jkasdnfjsndfu sdfja",
                 "Content" : "qwiiinqrasd sdsdifn asdifnsd fsnfsd afnas fasjnfasdnf asdfnas fasdnfasd foasdnf",
                 "Purchase" : 1431,
+                "StockId" : 1
+             
+}
+
+###
+PUT http://localhost:5128/api/Comment/4
+Content-Type: application/json
+
+{
+                "Title" : "abcd",
+                "Content" : "abcde",
                 "StockId" : 1
              
 }
