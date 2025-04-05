@@ -29,14 +29,13 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5128/api/Comment/1
+POST http://localhost:5128/api/Comment/2
 Content-Type: application/json
 
 {
-                "Title" : "jkasdnfjsndfu sdfja",
-                "Content" : "qwiiinqrasd sdsdifn asdifnsd fsnfsd afnas fasjnfasdnf asdfnas fasdnfasd foasdnf",
-                "Purchase" : 1431,
-                "StockId" : 1
+                "Title" : "jkjjk",
+                "Content" : "qwiiinqrasd sdsdifn asdifnsd fsnfsd afnas fasjnfasdnf asdfnas fasdnfasd foasdnf"
+
              
 }
 

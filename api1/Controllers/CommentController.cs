@@ -27,9 +27,11 @@ namespace api1.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             var comment = await _commentRepo.GetById(id);
             if (comment == null)
@@ -41,6 +43,8 @@ namespace api1.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             var comment = await _commentRepo.GetComments();
             var commentDtos = comment.Select(x => x.ToCommentDto());
@@ -48,21 +52,26 @@ namespace api1.Controllers
             return Ok(commentDtos);
         }
 
-        [HttpPost("{stockId}")]
+        [HttpPost("{stockId:int}")]
         public async Task<IActionResult> Create([FromRoute] int stockId, [FromBody] CreateCommentDto comment)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             bool exist = await _stockRepo.isStockExist(stockId);
             if (!exist)
                 return BadRequest("Stock doesn't exist");
-            var commentModel = await _commentRepo.Create(comment);
+            var commentModel = await _commentRepo.Create(comment, stockId);
 
             return Ok(commentModel.ToCommentDto());
 
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto updateComment)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             var commentModel = await _commentRepo.Update(id, updateComment);
             if (commentModel == null)
@@ -73,11 +82,13 @@ namespace api1.Controllers
 
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            var comment = _stockRepo.Delete(id);
+            var comment = await _stockRepo.Delete(id);
             if (comment == null)
                 return NotFound();
 
